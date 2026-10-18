@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Thangachii 💌</title>
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --pink: #ff79c8;
+  --purple: #b28aff;
+  --bg: #090611;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #fff0ff;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 15% 10%, #43175f 0%, transparent 42%),
+    radial-gradient(ellipse at 90% 85%, #501039 0%, transparent 38%),
+    var(--bg);
+}
+
+.glow {
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #c15cff;
+  filter: blur(100px);
+  opacity: .22;
+  pointer-events: none;
+}
+
+.g1 { top: 5%; left: -100px; }
+.g2 { bottom: 5%; right: -100px; background: #ff4ebd; }
+
+main {
+  width: min(760px, 100%);
+  margin: auto;
+  padding: 35px 20px 60px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid #dca5ff66;
+  border-radius: 30px;
+  color: #e7c5ff;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 25px 0 15px;
+  font-size: clamp(43px, 10vw, 76px);
+  line-height: 1.05;
+  background: linear-gradient(110deg, #fff, #ff9bd9, #b99aff);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 40px #c76dff25;
+}
+
+.subtitle {
+  color: #cdb9dc;
+  line-height: 1.8;
+  max-width: 500px;
+  margin: auto;
+}
+
+.cartoon {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 28px;
+  margin: 42px auto 30px;
+}
+
+.character {
+  width: 125px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.character:nth-child(2) {
+  animation-delay: -1.5s;
+}
+
+.face {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: auto;
+  border-radius: 45%;
+  background: #ffd5b8;
+  border: 3px solid #fff0df;
+  box-shadow: 0 0 28px #ff9bd922;
+}
+
+.hair {
+  position: absolute;
+  top: -7px;
+  left: -4px;
+  width: 94px;
+  height: 39px;
+  background: #342039;
+  border-radius: 50% 50% 25% 25%;
+}
+
+.sister .hair {
+  background: #4b2349;
+  height: 44px;
+}
+
+.eye {
+  position: absolute;
+  top: 43px;
+  width: 7px;
+  height: 10px;
+  border-radius: 50%;
+  background: #422638;
+  z-index: 1;
+}
+
+.eye.l { left: 22px; }
+.eye.r { right: 22px; }
+
+.blush {
+  position: absolute;
+  top: 57px;
+  width: 14px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff8bab;
+}
+
+.blush.l { left: 9px; }
+.blush.r { right: 9px; }
+
+.smile {
+  position: absolute;
+  top: 59px;
+  left: 36px;
+  width: 19px;
+  height: 10px;
+  border-bottom: 2px solid #a84f68;
+  border-radius: 50%;
+}
+
+.body {
+  height: 85px;
+  margin-top: -2px;
+  border-radius: 45px 45px 20px 20px;
+  background: linear-gradient(135deg, #a66bff, #6338a0);
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+}
+
+.sister .body {
+  background: linear-gradient(135deg, #ff9cdb, #c83d93);
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+button {
+  font: inherit;
+}
+
+.open-btn {
+  border: 0;
+  padding: 16px 27px;
+  border-radius: 40px;
+  background: linear-gradient(110deg, #ff83d0, #bb91ff);
+  color: #210b29;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 35px #e16dff45;
+  transition: .25s;
+}
+
+.open-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 50px #e16dff77;
+}
+
+.hint {
+  color: #aa95bc;
+  font-size: 13px;
+  margin: 17px 0 35px;
+}
+
+#letterArea {
+  display: none;
+  animation: appear 1.2s ease both;
+}
+
+#letterArea.show {
+  display: block;
+}
+
+.letter {
+  position: relative;
+  text-align: left;
+  padding: clamp(23px, 5vw, 42px);
+  border: 1px solid #d7a3ff55;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #24142f, #130d20);
+  box-shadow: 0 0 50px #a879ff1c;
+}
+
+.letter h2 {
+  color: #ffb7e4;
+  font-size: 27px;
+}
+
+.letter p {
+  color: #e7d6ed;
+  line-height: 1.9;
+}
+
+.signature {
+  color: #ffb8e3 !important;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
+#surprise {
+  display: none;
+  margin-top: 24px;
+  padding: 28px 20px;
+  border: 1px solid #ff8fdb66;
+  border-radius: 22px;
+  background: #35152fbb;
+  animation: appear 1.5s ease both;
+}
+
+#surprise.show { display: block; }
+
+#surprise h2 { color: #ffc0e8; }
+
+.big-heart {
+  font-size: 54px;
+  animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  25% { transform: scale(1.15); }
+  45% { transform: scale(1); }
+  65% { transform: scale(1.1); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.particle {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  z-index: 5;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(450deg); opacity: 0; }
+}
+
+footer {
+  margin-top: 45px;
+  color: #9580a7;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<main>
+  <div class="tag">✦ A LITTLE MESSAGE FROM MY HEART ✦</div>
+
+  <h1>I'm Sorry,<br>Thangachii 💗</h1>
+
+  <p class="subtitle">
+    Some feelings are difficult to say out loud...
+    so I made this little universe just for you. 🌙
+  </p>
+
+  <section class="cartoon" aria-label="Brother and sister cartoons">
+    <div class="character">
+      <div class="face">
+        <div class="hair"></div>
+        <span class="eye l"></span>
+        <span class="eye r"></span>
+        <span class="blush l"></span>
+        <span class="blush r"></span>
+        <span class="smile"></span>
+      </div>
+      <div class="body">💜</div>
+    </div>
+
+    <div class="character sister">
+      <div class="face">
+        <div class="hair"></div>
+        <span class="eye l"></span>
+        <span class="eye r"></span>
+        <span class="blush l"></span>
+        <span class="blush r"></span>
+        <span class="smile"></span>
+      </div>
+      <div class="body">💗</div>
+    </div>
+  </section>
+
+  <button class="open-btn" id="openBtn">
+    💌 Open Your Letter
+  </button>
+
+  <p class="hint">A little letter. A big hug. Endless love. 🫂</p>
+
+  <!-- Song hosted in your GitHub repository -->
+  <audio id="bgMusic" loop preload="none">
+    <source
+      src="https://raw.githubusercontent.com/Josh-debug3099/aval/main/Manithan%20-%20Aval%20Video%20Udhayanidhi%20Santhosh%20Narayanan.mp3
+ Copy song URL"
+      type="audio/mpeg">
+  </audio>
+
+  <section id="letterArea">
+    <article class="letter">
+      <div style="font-size:35px">💌✨</div>
+
+      <h2>To my dearest thangachii,</h2>
+
+      <p>
+        I may not always say the right things, and sometimes
+        I may hurt you without meaning to. But please know
+        that you mean so much to me.
+      </p>
+
+      <p>
+        I'm truly sorry for the times I made you feel sad.
+        I cannot change what happened, but I can learn from
+        it, listen better, and try to do better from now on.
+      </p>
+
+      <p>
+        Even when we fight or disagree, you'll always be
+        someone special to me. I hope that, when you're ready,
+        you can forgive me. There's no pressure — your feelings
+        matter to me.
+      </p>
+
+      <p>
+        Sending you the biggest virtual hug ever. 🫂💗
+      </p>
+
+      <p class="signature">
+        Always your brother,<br>
+        with lots of love 💜
+      </p>
+    </article>
+  </section>
+
+  <section id="surprise">
+    <div class="big-heart">💖</div>
+    <h2>One Last Little Surprise...</h2>
+    <p style="line-height:1.9;color:#e9d4ef">
+      No webpage can express everything in my heart.
+      But I hope this reminds you how much you matter to me.
+      Whatever happens, you'll always have a special place
+      in my heart. 🌙✨
+    </p>
+    <p style="color:#ffb9e5;font-weight:bold">
+      P.S. Your hug is still pending. 🫂💕
+    </p>
+  </section>
+
+  <footer>
+    Made with courage, love & a little bit of magic ✦
+  </footer>
+</main>
+
+<script>
+const openBtn = document.getElementById("openBtn");
+const letterArea = document.getElementById("letterArea");
+const surprise = document.getElementById("surprise");
+const music = document.getElementById("bgMusic");
+
+let opened = false;
+
+function showerHearts() {
+  const symbols = ["💗", "💜", "♡", "✨", "♥", "🌸"];
+
+  for (let i = 0; i < 38; i++) {
+    const particle = document.createElement("span");
+    particle.className = "particle";
+    particle.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.animationDuration =
+      (3 + Math.random() * 4) + "s";
+    particle.style.animationDelay =
+      Math.random() * 1.2 + "s";
+    particle.style.fontSize =
+      (14 + Math.random() * 18) + "px";
+
+    document.body.appendChild(particle);
+
+    setTimeout(() => particle.remove(), 8500);
+  }
+}
+
+openBtn.addEventListener("click", async () => {
+  if (opened) {
+    letterArea.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+    return;
+  }
+
+  opened = true;
+  letterArea.classList.add("show");
+  openBtn.textContent = "💗 Your Letter Is Open";
+  showerHearts();
+
+  // Music starts after the user clicks the button.
+  try {
+    await music.play();
+  } catch (error) {
+    console.warn(
+      "Could not play music. Check the GitHub audio URL.",
+      error
+    );
+  }
+
+  setTimeout(() => {
+    surprise.classList.add("show");
+    showerHearts();
+
+    surprise.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }, 3500);
+
+  setTimeout(() => {
+    letterArea.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }, 1200);
+});
+</script>
+
+</body>
+</html>
